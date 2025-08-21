@@ -60,7 +60,8 @@ public class bank {
             }
 
         }
-        // else if (name in database){
+        //else if (name in database){
+        JOptionPane.showMessageDialog(null,"User found Sucessfully");
         //     String cho;
         //     int amm;
 
@@ -75,6 +76,7 @@ public class bank {
         //     //Options will be shown that 
         // }
         else{
+            
             JOptionPane.showMessageDialog(null,"New user founded Sucessfully");
             int adh_no;
             String gmail;
