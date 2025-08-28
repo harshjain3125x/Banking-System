@@ -68,11 +68,21 @@ public class bank {
     }
 
     public static Boolean chk_cons_Exists(int co_id) {
-        final String DB_URL = "jdbc:mysql://127.0/0/1:3306/bank_backend";
+        final String DB_URL = "jdbc:mysql://127.0.0.1:3306/bank_backend";
         final String DB_USER = "root";
         final String DB_PASSWORD = "5202";
+        try(Connection conn=DriverManager.getConnection(DB_URL,DB_USER,DB_PASSWORD)){
+            String query="select 1 from all_cons where cons_id=?";
+            PreparedStatement pstmt=conn.prepareStatement(query);
+             pstmt.setInt(1, co_id);
+            ResultSet rs=pstmt.executeQuery();
+            return rs.next();}
+            catch(Exception e){
+                e.printStackTrace();
+                return false;
+            }
 
-        return false;
+    
     }
 
     public static void deposit(int co_id) {
@@ -254,6 +264,7 @@ public class bank {
         name = JOptionPane.showInputDialog("Enter your name");
         JOptionPane.showMessageDialog(null, "Welcome to Bank's Backend Project");
         mob_no = Long.parseLong(JOptionPane.showInputDialog("Enter your registered phone no"));
+        cid_=get_cons_id(mob_no);
 
         if (chk_cons_Exists(cid_)) {
             System.out.print(get_cons_id(mob_no));
