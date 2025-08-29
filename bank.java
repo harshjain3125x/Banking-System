@@ -45,6 +45,7 @@ public class bank {
         final String DB_URL = "jdbc:mysql://127.0/0/1:3306/bank_backend";
         final String DB_USER = "root";
         final String DB_PASSWORD = "5202";
+        
         // to check if no of totaltransactions in constumer account transactions is
         // greater than 10 in 6 months in table cons_transactions in his transactions
         // table
