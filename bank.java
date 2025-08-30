@@ -1,5 +1,6 @@
 //only two things are left to fetch no of transactions and to keep work looted and to make the data insert in table of credit card and loan
 //to store value of aadhar no and phone no using map data structure 
+//after purchasing the
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -79,7 +80,7 @@ public class bank {
     }
     // it will give the table of transaction of his
 
-    public static Boolean eligible_CREC(int co_id) {
+    public static Boolean c_CREC(int co_id) {
         Random rand=new Random();
         int n=rand.nextInt(100000000,999999999);
         if(eligble_(co_id)){
@@ -99,8 +100,7 @@ public class bank {
         JOptionPane.showMessageDialog(null, "Kindly give all the information correctly");
         name = JOptionPane.showInputDialog("Enter your Full name");
         mob_no = Long.parseLong(JOptionPane.showInputDialog("Enter your registered phone no"));
-        adh_no = Long.parseLong(JOptionPane.showInputDialog("Enter your Aadhar no "));
-        gmail = JOptionPane.showInputDialog("Enter your registered gmail id");
+                gmail = JOptionPane.showInputDialog("Enter your registered gmail id");
        
 
         // code to send all the data to to database and create one table with the mob_no
@@ -110,11 +110,11 @@ public class bank {
                         "INSERT INTO crecar(dateof,name,co_id,creno,interest,Monthly_due) VALUES(  ?,?, ?, ?,?,?);")) {
 
             preparedStatement.setString(1, da);
-            preparedStatement.setLong(2, name);
-            preparedStatement.setString(3, co_id);
+            preparedStatement.setString(2, name);
+            preparedStatement.setInt(3, co_id);
 
             preparedStatement.setLong(4, n);
-            preparedStatement.setString(5, interest);
+            preparedStatement.setString(5, da);
 
             int rowsAffected = preparedStatement.executeUpdate();
 
@@ -446,7 +446,7 @@ public class bank {
         final String DB_PASSWORD = "5202";
         String sqlsta = "CREATE TABLE IF NOT EXISTS " + "C" + cid + " (" +
                 "    trans_no INT PRIMARY KEY AUTO_INCREMENT," +
-                "    Date DATE," +
+                "    Date DATE," +  
                 "    ammount INT NOT NULL," +
                 "    medium VARCHAR(25) DEFAULT 'CASH'" +
                 ")";
@@ -679,7 +679,7 @@ public class bank {
                 get_trasn(cid_);
             }
 
-            if (eligible_loan(cid_)) {
+            if (eligble_(cid_)) {
                 JOptionPane.showMessageDialog(null, "Congratulations you are eligible for Pre Approved loan");
                 option = JOptionPane.showConfirmDialog(null, "Do you want to Apply", "Congratulations",
                         JOptionPane.YES_NO_OPTION);
